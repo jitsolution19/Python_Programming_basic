@@ -1,0 +1,103 @@
+<html>
+<title>Record Manager</title>
+
+<head>
+   <script type="text/javascript" src="{{ url_for('static', filename = 'hello.js') }}"></script>
+</head>
+
+<body>
+   <h1 style="text-align: center;text-size-adjust: 30px;color: blue;">Record Keeper</h1>
+   <p>Year 2024</p>
+   <button onclick="addRecord()">Add Record</button>
+   <button>Delete</button>
+   <input type="button" onclick="sayHello()" value="Say Hello" />
+   <p id="getrec"></p>
+   <div style="display: flexbox;margin-left: 200px;">   
+   <table id="recordkeeping" style="width: 200px;border: 1px solid;">
+      <thead style="font-size: 25px;font-family:'Times New Roman', Times, serif;">
+         <tr>
+            <th>S.no</th>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Amount</th>
+         </tr>
+      </thead>     
+      <tbody>
+         <tr>
+            <td style="text-align: center;">1</td>
+            <td><input type="date" id="tdate" name="tdate"></td>
+            <td>
+               <select name="tCategory" id="tCategory">
+                  <option value="Grocery">Grocery</option>
+                  <option value="Milk">Milk</option>
+                  <option value="Electricity">Electricity</option>
+                  <option value="Bike">Bike</option>
+                  <option value="Office">Office</option>
+                  <option value="Entertainment">Entertainment</option>
+                </select>   
+            </td>
+            <td><input type="text" id="tDescription" name="tDescription"></td>
+            <td><input type="text" name="tAmount" data-type="currency" name="Amount" style="text-align: center;"></td>
+         </tr>
+         <tr>
+            <td style="text-align: center;">2</td>
+            <td><input type="date" id="tdate" name="tdate"></td>
+            <td>
+               <select name="tCategory" id="tCategory">
+                  <option value="Grocery">Grocery</option>
+                  <option value="Milk">Milk</option>
+                  <option value="Electricity">Electricity</option>
+                  <option value="Bike">Bike</option>
+                  <option value="Office">Office</option>
+                  <option value="Entertainment">Entertainment</option>
+                </select>   
+            </td>
+            <td><input type="text" id="tDescription" name="tDescription"></td>
+            <td><input type="text" name="tAmount" data-type="currency" name="Amount" style="text-align: center;"></td>
+         </tr>
+         <tr>
+            <td style="text-align: center;">3</td>
+            <td><input type="date" id="tdate" name="tdate"></td>
+            <td>
+               <select name="tCategory" id="tCategory">
+                  <option value="Grocery">Grocery</option>
+                  <option value="Milk">Milk</option>
+                  <option value="Electricity">Electricity</option>
+                  <option value="Bike">Bike</option>
+                  <option value="Office">Office</option>
+                  <option value="Entertainment">Entertainment</option>
+                </select>   
+            </td>
+            <td><input type="text" id="tDescription" name="tDescription"></td>
+            <td><input type="text" name="tAmount" data-type="currency" name="Amount" style="text-align: center;"></td>
+         </tr>
+      </tbody>
+      <tfoot style="border: 1px solid;font-size: 25px;">
+         <tr style="height: 30px;">
+           <td id="total" style="border: 2px solid;text-align: center;" colspan="4">
+            <p style="font-family: Cambria;"><b>Total Amount</b></p>            
+         </td>
+           <td id="amount" style="border: 2px solid;text-align: center;background-color: #d8e8de;"><b></b>
+         </td>
+         </tr>
+        </tfoot>
+   </table>
+</div>
+   <div style="padding-top: 10px;margin-left: 200px;">     
+      <input type="button" style="display:inline;width: 300px;" onclick="total()" value="Total" />
+   </div>
+   <div style="padding-top: 30px;margin-left: 200px;">
+      <input type="button" name="Check" onclick="addrow()" value="CheckName" />
+      <table name="output" style="margin-top: 25px;border: 1px solid;">
+         <!-- <thead>
+            <th>Analytics</th>
+         </thead>
+         <tbody>
+
+         </tbody> -->
+      </table>
+   </div>
+</body>
+
+</html>
