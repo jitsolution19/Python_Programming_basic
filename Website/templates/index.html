@@ -7,12 +7,20 @@
 
 <body>
    <h1 style="text-align: center;text-size-adjust: 30px;color: blue;">Record Keeper</h1>
-   <div style="display: flexbox; margin-left: 300px;">
-      <a href = "{{ url_for('login') }}" class="btn">Login</a>
+   <div id="header">
+      <div class="topnav">
+         <a class="active" href="/">Home</a>
+         <a href="bookmaid">Book Maid</a>
+         <a href="recordkeeping">Record Keeper</a>
+         <a href="bookcab">Book Cab</a>
+         <a href="about">About us</a>
+         <a href="{{ url_for('login') }}" class="btn">Login</a>
+         <a href="{{ url_for('login') }}" class="btn">Register</a>
+         <a href="contact">Contact us</a>
+      </div>
    </div>
-
-   <div style="display: flexbox; margin-left: 300px;">
-      <a href = "{{ url_for('login') }}" class="btn">Register</a>
+   <div id="footerwrapper">
+      <p style="text-align: center;">Made in India with love <br>by <br>Jeetendra 2024</p>
    </div>
 </body>
 

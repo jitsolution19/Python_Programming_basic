@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Contact Us</title>
+
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'contact.js') }}"></script>
+</head>
+
+<body>
+    <h1>Contact Us Form</h1>
+    <div>
+        <h5>Fill the details</h5>
+        <form id="contactusform" action="{{url_for('result')}}" method="POST">
+            <label>Name *
+                <input type="text" name="name" placeholder="Enter Name" required></label>
+            <label>Mobile *
+                <input type="text" name="mobile" placeholder="Enter Mobile" required></label>
+            <label>Email
+                <input type="email" name="email" placeholder="Enter email id"></label>
+            <label type="text">Enter your query</label>
+            <input type="text" name="query">
+            <button type="submit" class="btn">Submit Query</button>
+            <button type="button" class="btn cancel" onclick="window.location.href='/';">Cancel</button>
+        </form>
+    </div>
+    <!-- <button type="button" class="testing" onclick="sayHello();">Testing JS Access</button> -->
+</body>
+
+</html>
