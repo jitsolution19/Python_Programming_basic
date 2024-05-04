@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+   <head>
+      <title>Welcome to Product Page</title>
+   </head>
+   <body>
+    {% if guest %}
+    <h1>Welcome {{ guest }}</h1>       
+ {% endif %}  
+      <p> Product Category</p>
+      <div>
+        <p>Book House Keeping Staff</p>
+        <p>Book Dog Walker</p>
+        <p>Book Driver</p>
+      </div>
+         <p><a href="/logout">Logout</a></p>
+   </body>
+</html>
