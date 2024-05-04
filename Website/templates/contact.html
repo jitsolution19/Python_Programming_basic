@@ -11,7 +11,7 @@
     <h1>Contact Us Form</h1>
     <div>
         <h5>Fill the details</h5>
-        <form id="contactusform" action="{{url_for('result')}}" method="POST">
+        <form id="contactusform" action="{{request.path}}" method="POST">
             <label>Name *
                 <input type="text" name="name" placeholder="Enter Name" required></label>
             <label>Mobile *
@@ -19,7 +19,7 @@
             <label>Email
                 <input type="email" name="email" placeholder="Enter email id"></label>
             <label type="text">Enter your query</label>
-            <input type="text" name="query">
+            <input type="text" name="querytext" placeholder="How can I help you ? ">
             <button type="submit" class="btn">Submit Query</button>
             <button type="button" class="btn cancel" onclick="window.location.href='/';">Cancel</button>
         </form>

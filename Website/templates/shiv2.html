@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head></head>
+   <body>
+      <table>
+         <thead>
+            <tr>
+               <th>Name</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for tgt in akauser %}
+               <tr>
+                  <td>{{ tgt.name }}</td>                 
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+      <title>ContactUs Result</title>
+   </head>
+   <style type="text/css">
+      table,tr,td,th {
+         margin-left: 250px;
+         border: 1px solid;
+      }
+
+   </style>
+   <body> 
+      <h1 style="text-align: center;">Result</h1>     
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+      <table>
+         <thead>
+            <tr>
+               <th>ID</th>
+               <th>Name</th>
+               <th>mobilenumber</th>
+               <th>email</th>
+               <th>query</th>
+               <th>creationdate</th>
+               <th>status</th>
+               <th>closingdate</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for contactquery in contactquerys %}
+               <tr>
+                  <td>{{ contactquery.id }}</td>
+                  <td>{{ contactquery.name }}</td>
+                  <td>{{ contactquery.mobilenumber }}</td>
+                  <td>{{ contactquery.email }}</td>
+                  <td>{{ contactquery.querytext }}</td>
+                  <td>{{ contactquery.creationdate }}</td>
+                  <td>{{ contactquery.status }}</td>
+                  <td>{{ contactquery.closingdate }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      <br>
+      <button type="button" class="back" onclick="window.location.href='/contactus';">Back</button>
+   </body>
+</html>
