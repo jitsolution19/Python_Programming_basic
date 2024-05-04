@@ -10,7 +10,7 @@
 
 <body>
    <h1>Welcome to Maid Booking</h1>
-   <form action="{{request.path}}" method="POST">
+   <form action="{{url_for('outflow')}}" method="POST">
       <label for="date"><b>Booking Date</b></label>
       <input name="Date" type="date" onkeyup="checkdate(this)" onchange="checkdate(this)" class="form-control">
       <!-- <input type="date" placeholder="select date" name="date" id="datepicker" min="{new Date().toISOString().split('T')[0]}" required> -->
@@ -23,15 +23,15 @@
          <option value="6 PM - 8 PM">6 PM - 8 PM</option>
       </select>
       <br>
-      <input type="checkbox" placeholder="category" name="cleaning">
+      <input type="checkbox" placeholder="category" name="category" value="cleaning">
       <label for="cleaning">Cleaning</label>
-      <input type="checkbox" placeholder="category" name="mopping">
+      <input type="checkbox" placeholder="category" name="category" value="mopping">
       <label for="Mopping">Mopping</label>
-      <input type="checkbox" placeholder="category" name="dusting">
+      <input type="checkbox" placeholder="category" name="category" value="dusting">
       <label for="Dusting">Dusting</label>
-      <input type="checkbox" placeholder="category" name="utensils">
+      <input type="checkbox" placeholder="category" name="category" value="utensils">
       <label for="Utensils">Utensils</label>
-      <input type="checkbox" placeholder="category" name="cooking">
+      <input type="checkbox" placeholder="category" name="category" value="cooking">
       <label for="cooking">Cooking</label>
       <br>
       <div class="custaddress">Add address details</div>

@@ -2,6 +2,8 @@ from flask import Flask, request, flash, url_for, redirect, render_template,sess
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_session import Session
+from models.maidbooking import MaidBookings
+from models.maidbooking import db as maid_db
 
 app = Flask(__name__)
 app.secret_key="Shivansh2021"
@@ -12,6 +14,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]=False
 
 Session(app)
 db = SQLAlchemy(app)
+maid_db = db
 app.app_context().push()
 
 class contactquerys(db.Model):
@@ -86,17 +89,23 @@ def contact():
 def output():
    return render_template('result1.html', contactquerys = contactquerys.query.all() )
 
-@app.route('/bookmaid')
+@app.route('/bookmaid', methods = ['GET', 'POST'])
 def maidbooking():
-   return redirect('maidsummary')
-
-@app.route('/maidsummary',methods=['GET', 'POST'])
-def maidsummary():
    if request.method == 'POST':
-      result = request.form
-      return render_template('maidsummary.html',result=result)    
+   #   result = request.form.to_dict()
+   #   selections = request.form.getlist('category')
+   #   result['category']=selections
+     maidBooking = MaidBookings(request.form['Date'], request.form['timeslot'],"testing",request.form['customername'], request.form['housenum'], request.form['add1'], request.form['add2'], request.form['state'], request.form['district'])
+     db.session.add(maidBooking)
+     db.session.commit()
+     flash('Record was successfully added')
+     return redirect(url_for('maidsummary'))
    else:
-      return render_template('student.html')
+    return render_template('student.html')
+
+@app.route('/maidsummary')
+def maidsummary():
+      return render_template('maidsummary.html',maidBookings = MaidBookings.query.all())    
 
 @app.route('/about')
 def about():
@@ -106,6 +115,20 @@ def about():
 def logout():
    session.pop('username', None)
    return redirect(url_for('index'))
+
+#-------------- Exepriment --------------------------------
+@app.route('/input')
+def input():
+   return render_template('student1.html')
+
+@app.route('/outflow',methods=['GET','POST'])
+def outflow():
+   if request.method == 'POST':
+      result = request.form.to_dict()
+      selections = request.form.getlist('category')
+      result['category']=selections
+   return render_template('result3.html',result=result)
+
 
 if __name__ == '__main__':
    db.create_all()
