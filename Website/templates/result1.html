@@ -2,16 +2,25 @@
 <html lang = "en">
    <head>
       <title>ContactUs Result</title>
+      <script>
+         function openPopup(url) {
+             // Define the features for the popup window
+             var features = 'width=600,height=400,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes';
+         
+             // Open the popup window
+             window.open(url, 'popupWindow', features);
+         }
+         </script>
    </head>
    <style type="text/css">
       table,tr,td,th {
-         margin-left: 250px;
+         /* margin-left: 250px; */
          border: 1px solid;
       }
 
    </style>
    <body> 
-      <h1 style="text-align: center;">Result</h1>     
+      <h1 style="text-align: center;">Contact Us Result</h1>     
       <hr/>
       {%- for message in get_flashed_messages() %}
          {{ message }}
@@ -21,12 +30,12 @@
             <tr>
                <th>ID</th>
                <th>Name</th>
-               <th>mobilenumber</th>
-               <th>email</th>
-               <th>query</th>
-               <th>creationdate</th>
-               <th>status</th>
-               <th>closingdate</th>
+               <th>Mobile Number</th>
+               <th>Email </th>
+               <th>Query</th>
+               <th>Creation Date</th>
+               <th>Status</th>
+               <th>Closing Date</th>
             </tr>
          </thead>
 
@@ -39,7 +48,7 @@
                   <td>{{ contactquery.email }}</td>
                   <td>{{ contactquery.querytext }}</td>
                   <td>{{ contactquery.creationdate }}</td>
-                  <td>{{ contactquery.status }}</td>
+                  <td> <a href="#" onclick="openPopup('/maidsummary')">{{ contactquery.status }}</a></td>
                   <td>{{ contactquery.closingdate }}</td>
                </tr>
             {% endfor %}
