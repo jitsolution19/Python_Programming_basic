@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<title>Curd Operation</title>
+
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="../static/js/curdoperation.js"></script> -->
+<!-- <script src="../static/js/script.js"></script> -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/curdoperation.js') }}"></script>
+<!-- <script src="{{ url_for('static', filename='js/script.js') }}"></script> -->
+</head>
+
+<body>
+    <h1 style="text-align: center;">Curd Operation</h1>
+    <label>Enter Text <input type="text" id="inputdata" name="inputentry"></label>
+    <button type="button" name="addtext" id="addtext"  onclick="addtext()">Add Text</button>
+    <button type="button" id="updatetext" name="updatetext" onclick="updatetext()">Update Text</button>   
+    <button type="button" id="deletetext" name="deletetext" onclick="deleteentry()">Delete Text</button>
+    <button type="button" id="displaytext" name="displaytext" onclick="displayEntry()">Display</button>
+    <button type="button" class="btn cancel" onclick="window.location.href='/';">Back</button>
+    <button type="button" id="entry" name="entry">Entry</button>
+    <div style="padding: 10px;">   
+        <p id="outputtext">Data is</p>     
+        <ul id="dbdata"></ul>
+    </div>
+</body>
+</html>

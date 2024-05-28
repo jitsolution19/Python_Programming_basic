@@ -16,9 +16,12 @@
          <a href="inventory">Inventory</a>
          <a href="about">About us</a>
          <a href="{{ url_for('login') }}" class="btn">Login</a>
-         <a href="{{ url_for('register') }}" class="btn">Register</a>
+         <a href="{{ url_for('my_blueprint.register') }}" class="btn">Register</a>
          <a href="contactus">Contact us</a>
       </div>
+   </div>
+   <div style="padding: 20px;">
+      <a href="{{url_for('my_blueprint2.curdoperator')}}">Curd Operation</a>
    </div>
    <div id="footerwrapper">
       <p style="text-align: center;">Made in India with love <br>By<br><span style="font-family:Georgia;">Jeetendra @2024</span></p>
