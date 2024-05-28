@@ -1,4 +1,4 @@
-from flask import Flask, request, flash, url_for, redirect, render_template, session
+from flask import Flask, request, flash, url_for, redirect, render_template, session,jsonify
 # from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_session import Session
@@ -6,6 +6,7 @@ from models.maidbooking import MaidBookings
 from models.contactform import ContactQuery
 from models.productInventory import ProductInventorys
 from my_blueprint import my_blueprint
+from my_blueprint2 import my_blueprint2
 from database import db
 import json
 
@@ -16,7 +17,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students.sqlite3'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.register_blueprint(my_blueprint)
-
+app.register_blueprint(my_blueprint2)
 
 # Initialize SQLAlchemy with the app
 # db = SQLAlchemy(app)
@@ -42,7 +43,7 @@ def login():
         else:
             flash('You were successfully logged in')
             session['logged_in'] = True
-            return redirect(url_for('sign_in', guest='Administrator'))
+            return redirect(url_for('my_blueprint.sign_in', guest='Administrator'))
 
     return render_template('login.html', error=error)
 
@@ -63,6 +64,7 @@ def product():
 @app.route('/inventory')
 def inventory():
    return render_template('inventory1.html', ProductInventorys = ProductInventorys.query.all() )
+
 
 @app.route('/contactus', methods = ['GET', 'POST'])
 def contact():
