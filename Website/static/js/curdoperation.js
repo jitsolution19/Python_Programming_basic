@@ -20,7 +20,27 @@ function displayEntry() {
     alert("Display entry");
 };
 
-$(function(){
+$(function () {
+    $("#addtext").click(function () {
+        var text = document.getElementById("inputdata").value;
+        console.log(text);
+        alert("Add text--> " + text);
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ 'Purchase Date': text }),
+            url: "/addOperation",
+            success: function (response) {
+                document.getElementById("outputtext").innerText = response;
+            },
+            error: function (xhr, status, error) {
+                console.error("Error:", error);
+            }
+        });
+    });
+});
+
+$(function () {
     $("#entry").click(function () {
         alert("Entry clicked");
         $.ajax({
@@ -29,14 +49,14 @@ $(function(){
             url: "/intro", success: function (results) {
                 if (Array.isArray(results)) {
                     var itemlist = document.getElementById("dbdata");
-                    itemlist.innerHTML = ""; 
-                    results.forEach(function (element) {  
+                    itemlist.innerHTML = "";
+                    results.forEach(function (element) {
                         var purchaseDate = element["Purchase date"];
                         var id = element.id;
                         itemlist.insertAdjacentHTML("beforeend", "<li>Purchase Date: " + purchaseDate + ", ID: " + id + "</li>");
                     });
                 } else {
-                    console.error("Results is not an array");   
+                    console.error("Results is not an array");
                 }
             },
             error: function (xhr, status, error) {
@@ -44,7 +64,7 @@ $(function(){
             }
 
         });
-    }); 
+    });
 });
 
 // $(document).ready(function () {
