@@ -1,15 +1,14 @@
 <!doctype html>
 <html>
-
 <head>
    <title>Welcome to Product Page</title>
 </head>
 
 <body>
    {% if guest %}
-   <h1>Welcome {{ guest }}</h1>
+   <h1 style="text-align: center;text-decoration: underline;">Welcome {{ guest }}</h1>
    {% endif %}
-   <p> Product Category</p>
+   <p style="font-weight: bold;text-decoration: underline;">Enter Product Details</p>
    <div style="padding:20px">
       <form action="{{request.path}}" method="POST">
          <label>Purchase Date <input type="date" name="purchasedate"></label>
@@ -24,11 +23,13 @@
          <label>Manufacturer <input type="text" name="manufacturer"></label>
          <label>Seller <input type="text" name="seller"></label>
          <label>Location <input type="text" name="location"></label>
-         <button type="submit" class="btn">Add Product</button>
+         <br>
+         <span style="padding-top: 10px;">
+            <button type="submit" class="btn">Add Product</button>
+         </span>
       </form>
    </div>
    <br>
    <p><a href="/logout">Logout</a></p>
 </body>
-
 </html>

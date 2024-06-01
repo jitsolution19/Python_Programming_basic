@@ -1,13 +1,3 @@
-function addtext() {
-    var text = document.getElementById("inputdata").value;
-    console.log(text);
-    document.getElementById("outputtext").innerText = text;
-};
-
-function updatetext() {
-
-};
-
 function deleteentry() {
     alert("jitendr");
     var text = document.getElementById("inputdata").value;
@@ -16,10 +6,11 @@ function deleteentry() {
     alert(text);
 };
 
-function displayEntry() {
-    alert("Display entry");
-};
-
+/***********************************************************************************************************/
+// Function   : Add Data in the Table 
+// Table Name : ProductInventorys
+// Date       : 02/06/2024
+/***********************************************************************************************************/
 $(function () {
     $("#addtext").click(function () {
         var text = document.getElementById("inputdata").value;
@@ -40,6 +31,11 @@ $(function () {
     });
 });
 
+/***********************************************************************************************************/
+// Function   : Display Data from the Table 
+// Table Name : ProductInventorys
+// Date       : 02/06/2024
+/***********************************************************************************************************/
 $(function () {
     $("#entry").click(function () {
         alert("Entry clicked");
@@ -51,9 +47,24 @@ $(function () {
                     var itemlist = document.getElementById("dbdata");
                     itemlist.innerHTML = "";
                     results.forEach(function (element) {
-                        var purchaseDate = element["Purchase date"];
-                        var id = element.id;
-                        itemlist.insertAdjacentHTML("beforeend", "<li>Purchase Date: " + purchaseDate + ", ID: " + id + "</li>");
+                        var itemHTML ="<li>";
+                        for(var key in element){
+                            // if(element.hasOwnProperty(key)){
+                            //     itemHTML +=key + ":" + element[key]+",";
+                            // }
+
+                            if (element.hasOwnProperty(key)) {
+                                itemHTML += "<strong>" + key + "</strong>: " + element[key] + "<br>";
+                            }
+                        }
+                        itemHTML = itemHTML.slice(0, -2); // Remove the trailing comma and space
+                        itemHTML += "</li>";
+                        itemlist.insertAdjacentHTML("beforeend", itemHTML);
+
+                        // var purchaseDate = element['Purchase date'];
+                        // // var purchaseDate= element.Seller
+                        // var id = element.id;
+                        // itemlist.insertAdjacentHTML("beforeend", "<li>Purchase Date: " + purchaseDate + ", ID: " + id + "</li>");
                     });
                 } else {
                     console.error("Results is not an array");
@@ -66,29 +77,6 @@ $(function () {
         });
     });
 });
-
-// $(document).ready(function () {
-//     $("#entry").click(function () {
-//         alert("Entry clicked");
-//         $.ajax({
-//             type: "GET",
-//             ContentType: "application/json",
-//             url: "/intro", success: function (results) {
-//                 if (Array.isArray(results)) {
-//                     results.forEach(function (element) {
-//                         var itemlist = document.getElementById("dbdata");
-//                         itemlist.insertAdjacentHTML("beforeend", "<li>"+element+"</li>");
-//                     });
-//                 } else {
-//                     console.error("Results is not an array");
-//                 }
-//             },
-//             error: function (xhr, status, error) {
-//                 console.error("Error:", error);
-
-//             }
-
-//         });
-//     });
-// });
-// document.querySelector("#addtext")
+/***********************************************************************************************************/
+// ---------------------------------------------- End of Code ----------------------------------------------
+/***********************************************************************************************************/
