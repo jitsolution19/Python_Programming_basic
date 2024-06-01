@@ -14,8 +14,9 @@ def curdoperator():
 @my_blueprint2.route('/intro')
 def intro():
    products = ProductInventorys.query.all() 
-   inventory_list=[{'id':product.id, 
-                    'Purchase date':product.purchasedate}for product in products]
+   # inventory_list=[{'id':product.id, 
+   #                  'Purchase date':product.purchasedate}for product in products]
+   inventory_list = [product.to_dict() for product in products]
    return jsonify(inventory_list)
 
 @my_blueprint2.route('/addOperation', methods = ['GET', 'POST'])
@@ -29,7 +30,19 @@ def addOperation():
          #       text("INSERT INTO ProductInventorys (purchasedate) VALUES (:purchase_date)"),
          #        {"purchase_date": purchase_date}
          #  )
-          new_product = ProductInventorys(purchasedate=purchase_date)
+          new_product = ProductInventorys(purchasedate=purchase_date,
+                                          productname="",
+                                          productdescription="",
+                                          productcategory="",
+                                          productQuantity="",
+                                          skunumber="",
+                                          productimage="",
+                                          productprice="",
+                                          margin="",
+                                          manufacturer="",
+                                          seller="",
+                                          location=""                                          
+                                       )
           db.session.add(new_product)
           db.session.commit()         
       else:

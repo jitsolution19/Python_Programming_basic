@@ -27,3 +27,20 @@ class ProductInventorys(db.Model):
         self.manufacturer= manufacturer
         self.seller=seller
         self.location=location
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'Purchase Date': self.purchasedate,
+            'Product Name': self.productname,
+            'Product Description': self.productdescription,
+            'Product Category': self.productcategory,
+            'Product Quantity': self.productQuantity,
+            'SKU Number': self.skunumber,
+            'Product Image': self.productimage,
+            'Product Price': self.productprice,
+            'Margin': self.margin,
+            'Manufacturer': self.manufacturer,
+            'Seller': self.seller,
+            'Location': self.location
+        }
