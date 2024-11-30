@@ -6,7 +6,7 @@ my_blueprint = Blueprint('my_blueprint', __name__)
 
 @my_blueprint.route('/about')
 def about():
-   return render_template('about.html')
+   return render_template('aboutUs/AboutUs.html')
 
 @my_blueprint.route('/logout')
 def logout():

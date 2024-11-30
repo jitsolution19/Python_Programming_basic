@@ -59,3 +59,42 @@ def addOperation():
    #          return redirect(url_for('inventory'))
    # else:            
    # return render_template('product.html', guest=session['username'])
+
+@my_blueprint2.route('/deleteInventory',  methods = ['GET', 'POST'])
+def deleteInventory():
+   if request.method == 'POST':
+      if request.is_json:
+          data = request.get_json()
+          productID = data.get("ID")
+          flash(productID)
+          product = ProductInventorys.query.filter_by(id=productID).first()
+          if product:
+             db.session.delete(product)   
+             db.session.commit()          
+             return jsonify(f"Product with ID {productID} deleted successfully.")
+          else:
+             return jsonify(f"Product with ID {productID} not found."), 404
+      else:
+         return "Request was not JSON", 400
+   else:
+      return ('Unable to delete the data in database. Please try again')
+
+@my_blueprint2.route('/updateInventory',  methods = ['GET', 'POST'])
+def updateInventory():
+   if request.method == 'POST':
+      if request.is_json:
+          data = request.get_json()
+          productID = data.get("ID")
+          sellerinfo = data.get("Seller")
+          flash(productID)
+          product = ProductInventorys.query.filter_by(id=productID).first()
+          if product:
+             product.seller =sellerinfo
+             db.session.commit()          
+             return jsonify(f"Seller info {sellerinfo} of Product with ID {productID} updated successfully.")
+          else:
+             return jsonify(f"Seller info {sellerinfo} of Product with ID {productID} not updated."), 404
+      else:
+         return "Request was not JSON", 400
+   else:
+      return ('Unable to update the data in database. Please try again'),405

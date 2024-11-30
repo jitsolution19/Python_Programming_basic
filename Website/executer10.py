@@ -2,15 +2,15 @@ from flask import Flask, request, flash, url_for, redirect, render_template, ses
 # from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_session import Session
-from models.maidbooking import MaidBookings
 from models.contactform import ContactQuery
 from models.productInventory import ProductInventorys
 from my_blueprint import my_blueprint
 from my_blueprint2 import my_blueprint2
+from maidProfile import my_maidProfile
 from database import db
 import json
 
-app = Flask(__name__)
+app = Flask(__name__,static_folder='static')
 app.secret_key = "Shivansh2021"
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
@@ -18,6 +18,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students.sqlite3'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.register_blueprint(my_blueprint)
 app.register_blueprint(my_blueprint2)
+app.register_blueprint(my_maidProfile)
 
 # Initialize SQLAlchemy with the app
 # db = SQLAlchemy(app)
@@ -29,7 +30,7 @@ db.init_app(app)
 # Define Routes
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('hexaWebsite/index.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -55,15 +56,15 @@ def product():
             db.session.add(inventoryaddition)
             db.session.commit()
             flash('Record was successfully added')
-            return redirect(url_for('inventory'))
+            return redirect(url_for('productmanagement/inventory'))
         else:            
-            return render_template('product.html', guest=session['username'])
+            return render_template('productmanagement/product.html', guest=session['username'])
     else:
         return render_template('index.html')
 
 @app.route('/inventory')
 def inventory():
-   return render_template('inventory1.html', ProductInventorys = ProductInventorys.query.all() )
+   return render_template('productmanagement/inventory1.html', ProductInventorys = ProductInventorys.query.all() )
 
 
 @app.route('/contactus', methods = ['GET', 'POST'])
@@ -82,24 +83,6 @@ def contact():
 @app.route('/output')
 def output():
    return render_template('result1.html', contactquerys = ContactQuery.query.all() )
-
-# Define other routes...
-@app.route('/bookmaid', methods = ['GET', 'POST'])
-def maidbooking():
-   if request.method == 'POST':  
-     categoryselections = request.form.getlist('category')
-     categories_str = json.dumps(categoryselections)
-     maidBooking = MaidBookings(request.form['Date'], request.form['timeslot'],categories_str,request.form['customername'], request.form['housenum'], request.form['add1'], request.form['add2'], request.form['state'], request.form['district'])
-     db.session.add(maidBooking)
-     db.session.commit()
-     flash('Record was successfully added')
-     return redirect(url_for('maidsummary'))
-   else:
-    return render_template('bookingMaid.html')
-
-@app.route('/maidsummary')
-def maidsummary():
-      return render_template('maidsummary.html',maidBookings = MaidBookings.query.all())   
 
 if __name__ == '__main__':
     # Create all tables
