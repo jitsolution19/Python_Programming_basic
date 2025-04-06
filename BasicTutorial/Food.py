@@ -11,8 +11,8 @@ recipes = [
     {"title": "Aalu Tomato Sabji","ingredients":"boiled aalu oil hing namak	haldi rai jeera	green chilli tomato"},
     {"title": "Lauki Sabji", "ingredients":"lauki oil hing namak haldi green chilli tomato"},
     {"title": "Bhindi Sabji", "ingredients":"bhindi oil hing namak haldi green chilli pyaaz"},
-    {"title":"Bharma Bhindi Sabji","ingredients":"Bhindi oil hing namak	haldi green chilli pyaaz dahi tomato"},
-    {"title":"Aalu Gobi Dry Sabji","ingredients":"Aalu Gobi	oil	hing namak haldi jeera	green chilli Khade masale"}	
+    {"title": "Bharma Bhindi Sabji","ingredients":"Bhindi oil hing namak	haldi green chilli pyaaz dahi tomato"},
+    {"title": "Aalu Gobi Dry Sabji","ingredients":"Aalu Gobi oil hing namak haldi jeera	green chilli Khade masale"}	
 ]
 
 # Vectorize
