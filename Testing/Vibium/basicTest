@@ -1,0 +1,13 @@
+from vibium import Browser
+
+# Start a browser session
+browser = Browser("chrome")
+
+# Natural-language style actions
+browser.open("https://google.com")
+browser.type("search box", "Vibium AI automation")
+browser.click("Search button")
+browser.verify_text("results", "Vibium")
+
+# Close
+browser.quit()
